@@ -2528,3 +2528,16 @@ May 19 11:33:58 login[73]: root login on 'console'
 <img src="images/network.png"                 alt="network settings" width="800"/>
 
 ---
+
+### SSH login
+
+```
+[tedsluis@lenovo xiaomi-xiaofanf-s1-hacks]$ ssh root@192.168.11.121
+The authenticity of host '192.168.11.121 (192.168.11.121)' can't be established.
+ECDSA key fingerprint is SHA256:HJ8XserT8PvQR94NuLtn1nTp1vn8OHAIEJJwv/mhgno.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.11.121' (ECDSA) to the list of known hosts.
+root@192.168.11.121's password: 
+[root@DAFANG:~]# 
+``
+
