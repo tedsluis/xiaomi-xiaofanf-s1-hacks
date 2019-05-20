@@ -10,17 +10,21 @@ https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks
 ---
 
 ### T20 board
-T20 board
-i9C5C-MCUP01 V1.9 i9C5C B01
-2018-10-10
+
+* T20 board
+* i9C5C-MCUP01 V1.9 i9C5C B01
+* 2018-10-10
+
 <img src="images/T20-1.png" alt="T20 board front" width="800"/>
 Serial pins right bottom corner (top to bottom):
+
 * GND
 * TX
 * RX
 
 <img src="images/T20-2.png" alt="T20 board back" width="800"/>
 Serial pins upper left corner (left to right):
+
 * RX
 * TX
 * GND
@@ -29,18 +33,22 @@ Serial pins upper left corner (left to right):
 
 ### Camera boards
 <img src="images/cam1.png" alt="cam board 1" width="800"/>
-lSC5S-B02
-WYZEC2-SENPO1 V1.1 
-2018-09-25
+
+* lSC5S-B02
+* WYZEC2-SENPO1 V1.1 
+* 2018-09-25
+
 <img src="images/cam2.png" alt="cam board 2" width="800"/>
 
 ---
 
 ### Connect Xiaomi Xiaofang s1 cam to a pc using a serial connection
-* Use a serial to usb convertor
+
+* Use a serial to usb FTDI-Adapter with 3.3V
 * Connect RX to TX, TX to RX and GND to GND
-* install a serial terminal client like 'cu', 'picocom' or 'putty'.
-* confugure 115200 N1
+* Install a serial terminal client like 'cu', 'picomco' or 'putty'.
+* Confugure the terminal client 115200 N1
+* Power up the cam.
 
 ---
 
@@ -426,8 +434,18 @@ console=ttyS1,115200n8 mem=41700K@0x0 ispmem=8M@0x28B9000 rmem=15644K@0x30B9000 
 
 ---
 
-### Flash firmware: Boot with usb + 20 seconds config button pressed
-usb = 32GB: 1x 400MB fat32 partition (created using GPARTED) with one file: https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/hacks/cfw/xiaofang/cfw-1.0.bin
+### Flash firmware: install bootload from microSD
+
+* Format your microSD to FAT32. NTFS, EXFAT etc. won't work. Try to use smaller older SD cards like 512 MB or create just a single primary 400 MB partition (using gparted).
+* Download https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/hacks/cfw/xiaofang/cfw-1.0.bin
+* Copy the CFW-Binary from the prevois step to the formatted microSD card and rename it to "demo.bin". There must not be other files on the microSD! 
+* Remove the power cable from the camera and plug the microSD card into the camera.
+* Hold down the setup button on the camera while.
+* Plugging in the USB power cable.
+* Keep the setup button pressed for another 20 seconds.
+* Wait until the firmware has finished flashing (like 3 minutes). 
+* Remove the microSD card and power up the camera.
+
 ```
 [root@msi ~]# cu -l /dev/ttyUSB0 -s 115200
 Connected.
@@ -1387,8 +1405,14 @@ already to 30, new audio alarm start
 ---
 
 ### Boot from custom software: Boot with usb 
-usb = 32GB: 1x 400MB fat32 partition (created using GPARTED) with these files on it: https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/tree/master/firmware_mod
-Don't forget to copy '/config/wpa_supplicant.conf.dist' to 'config/wpa_supplicant.conf' and to fill in WIFI settings!
+
+* Delete the 'demo.bin' from the microSD or format a new microSD to FAT32. Try to use smaller older SD cards like 512 MB or create just a single primary 400 MB partition (using gparted).
+* Clone the https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks repository. 
+* Copy everything from "firmware_mod" folder into the root of the microSD.
+* Copy config/wpa_supplicant.conf.dist to config/wpa_supplicant.conf
+* Modify the file config/wpa_supplicant.conf on the microSD card to configure the wifi-settings. 
+* Insert the microSD card and power up the camera.
+
 ```
 root@msi ~]# sudo chmod 666 /dev/ttyUSB0
 [root@msi ~]# cu -l /dev/ttyUSB0 -s 115200
@@ -2057,11 +2081,14 @@ Starting v4l2rtspserver-master
 ---
 
 ### Web browser login
-Get the IP address from the DHCP server and login: https://IPADDRESS
+
+* Get the IP address from the DHCP server
+* Open a web browser and login: https://IPADDRESS
 
 ---
 
-### Log after browsing through the GUI.
+### View logging after browsing through the GUI.
+
 ```
 DAFANG login: root
 Password: 
