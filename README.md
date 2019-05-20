@@ -1,17 +1,48 @@
-# Xiaomo Xiaofang s1 hack
+# Xiaomi Xiaofang s1 hack
 Xiaomi Mijia Xiaofang 1 S 110 degrees F2.0 8X 1080 P Digitale Zoom Smart Camera IP WIFI 
+https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks
+
+---
 
 ### Camera view with controll settings
-<img src="images/camera-view2.png"            alt="Camera settings" width="800"/>
+<img src="images/camera-view2.png" alt="Camera settings" width="800"/>
+
+---
 
 ### T20 board
-<img src="images/T20-1.png"                   alt="T20 board front" width="800"/>
-<img src="images/T20-2.png"                   alt="T20 board back" width="800"/>
+T20 board
+i9C5C-MCUP01 V1.9 i9C5C B01
+2018-10-10
+<img src="images/T20-1.png" alt="T20 board front" width="800"/>
+Serial pins right bottom corner (top to bottom):
+* GND
+* TX
+* RX
+
+<img src="images/T20-2.png" alt="T20 board back" width="800"/>
+Serial pins upper left corner (left to right):
+* RX
+* TX
+* GND
+
+---
 
 ### Camera boards
-<img src="images/cam1.png"                    alt="cam board 1" width="800"/>
-<img src="images/cam2.png"                    alt="cam board 2" width="800"/>
+<img src="images/cam1.png" alt="cam board 1" width="800"/>
+lSC5S-B02
+WYZEC2-SENPO1 V1.1 
+2018-09-25
+<img src="images/cam2.png" alt="cam board 2" width="800"/>
 
+---
+
+### Connect Xiaomi Xiaofang s1 cam to a pc using a serial connection
+* Use a serial to usb convertor
+* Connect RX to TX, TX to RX and GND to GND
+* install a serial terminal client like 'cu', 'picocom' or 'putty'.
+* confugure 115200 N1
+
+---
 
 ### Boot log without SD card
 ```
@@ -370,8 +401,9 @@ pe
 ##### sensor not found
 [    8.698784] misc sinfo_release
 Not have the sensor driver!!!
-
 ```
+
+---
 
 ### Login
 Username: root Password: ismart12
@@ -382,6 +414,8 @@ Jan  1 08:03:54 login[62]: root login on 'console'
 [root@Ingenic-uc1_1:~]#
 ```
 
+---
+
 ### Memory
 ```
 [root@Ingenic-uc1_1:/]# cat /proc/cmdline 
@@ -389,6 +423,8 @@ console=ttyS1,115200n8 mem=41700K@0x0 ispmem=8M@0x28B9000 rmem=15644K@0x30B9000 
 [root@Ingenic-uc1_1:/]# 
 ```
 41700K + 8M + 15644K = 65536K = 64M model
+
+---
 
 ### Flash firmware: Boot with usb + 20 seconds config button pressed
 usb = 32GB: 1x 400MB fat32 partition (created using GPARTED) with one file: https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/hacks/cfw/xiaofang/cfw-1.0.bin
@@ -1348,6 +1384,8 @@ msg_queue_rcv time: 57FBBC04, id: 65538, type: 7632, cmd: 4567
 already to 30, new audio alarm start
 ```
 
+---
+
 ### Boot from custom software: Boot with usb 
 usb = 32GB: 1x 400MB fat32 partition (created using GPARTED) with these files on it: https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/tree/master/firmware_mod
 Don't forget to copy '/config/wpa_supplicant.conf.dist' to 'config/wpa_supplicant.conf' and to fill in WIFI settings!
@@ -2016,12 +2054,14 @@ Starting v4l2rtspserver-master
 
 ```
 
+---
+
 ### Web browser login
+Get the IP address from the DHCP server and login: https://IPADDRESS
 
+---
 
-
-### Login
-
+### Log after browsing through the GUI.
 ```
 DAFANG login: root
 Password: 
@@ -2352,68 +2392,112 @@ May 19 11:33:58 login[73]: root login on 'console'
 [  815.760308] RTL871X: set group key camid:6, addr:04:a1:51:52:bf:c0, kid:1, type:TKIP
 
 ```
+
+---
+
 ### Camera view
 <img src="images/camera-view.png"             alt="Camera view" width="800"/>
+
+---
 
 ### Overview
 <img src="images/overview.png"                alt="Overview" width="800"/>
 
+----
+
 ### Log Summery
 <img src="images/log-summery.png"             alt="log summery" width="800"/>
+
+---
 
 ### Log dmesg
 <img src="images/log-dmesg.png"               alt="log dmesg" width="800"/>
 
+---
+
 ### Logcat
 <img src="images/log-logcat.png"              alt="log logcat" width="800"/>
+
+---
 
 ### Log video server
 <img src="images/log-video-server.png"        alt="log video server" width="800"/>
 
+---
+
 ### Last update log
 <img src="images/log-last-update.png"         alt="log last update" width="800"/>
+
+---
 
 ### Process log
 <img src="images/log-process-list.png"        alt="log process list" width="800"/>
 
+---
+
 ### Log mounts
 <img src="images/log-mounts.png"              alt="log mounts" width="800"/>
+
+---
 
 ### System
 <img src="images/system.png"                  alt="system" width="800"/>
 
+---
+
 ### Administration
 <img src="images/administration.png"          alt="administration" width="800"/>
+
+---
 
 ### Video settings
 <img src="images/video1.png"                  alt="video settings" width="800"/>
 <img src="images/video2.png"                  alt="video settings" width="800"/>
 
+---
+
 ### Audio settings
 <img src="images/audio.png"                   alt="audio settings" width="800"/>
+
+---
 
 ### OSD display settings
 <img src="images/osd-display.png"             alt="osd display settings" width="800"/>
 
+---
+
 ### Motor settings
 <img src="images/motor.png"                   alt="motor control" width="800"/>
+
+---
 
 ### LED settings
 <img src="images/leds.png"                    alt="leds settings" width="800"/>
 
+---
+
 ### Update
 <img src="images/update.png"                  alt="update" width="800"/>
 
+---
+
 ### Services
 <img src="images/services.png"                alt="services" width="800"/>
+
+---
 
 ### Motion
 <img src="images/motion.png"                  alt="motion settings" width="800"/>
 <img src="images/motion2.png"                 alt="motion settings" width="800"/>
 
+---
+
 ### sw auto night settings
 <img src="images/sw-auto-night-settings.png"  alt="sw auto night settings" width="800"/>
+
+---
 
 ### Network settings
 <img src="images/network.png"                 alt="network settings" width="800"/>
 
+---
